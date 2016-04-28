@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Angular</title>
-  <script src="/bower_components/angular/angular.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+    <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body ng-app>
-  <h1>Angular</h1>
+
+<body>
+    <div ng-app='myApp' ng-controller='mainCtrl' class="container" style="padding-top: 40px">
+        <div class="row">
+            <div class="col-sm-3">
+                <form ng-submit="addRecord()">
+                    <h2>New Records</h2>
+                    <div class="form-group">
+                        <label for="">Date</label>
+                        <input type="date" class="form-control" ng-model='newRecord.date'>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Description</label>
+                        <input type="text" class="form-control" placeholder="description..." ng-model='newRecord.description'>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Debits</label>
+                        <input type="text" class="form-control" placeholder="$" ng-model='newRecord.debits'>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Credtis</label>
+                        <input type="text" class="form-control" placeholder="$" ng-model='newRecord.credits'>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary">Add</button>
+                </form>
+                <hr>
+
+            </div>
+            <div class="col-sm-6" ng-if="records">
+                <div class="list-group">
+                    <h2>Your Balance:<span> (${{getBalence()}})</span></h2>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <input type="text" placeholder="Search" class="form-control" ng-model="searchFilter">
+                        </div>
+                        <div class="col-sm-2">
+                            <!-- <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-sort-by-alphabet"></i></button>
+                            <button type="button" class="btn btn-default" ng-click="sortBy('age')"><i class="glyphicon glyphicon-sort-by-order"></i></button> -->
+                        </div>
+                    </div>
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table" style="width:100%">
+                            <tr>
+                                <td ng-click="sortBy('date')">Date</td>
+                                <td ng-click="sortBy('description')">Description</td>
+                                <td ng-click="sortBy('debits')">Debits (${{ getDebitsTotal() }})</td>
+                                <td ng-click="sortBy('credits')">Credits (${{ getCreditsTotal() }})</td>
+                                <td></td>
+                            </tr>
+                            <tr ng-repeat="record in records | orderBy:order | filter:searchFilter track by $index">
+                                <td>{{record.date}}</td>
+                                <td>{{record.description}}</td>
+                                <td>${{record.debits}}</td>
+                                <td>${{record.credits}}</td>
+                                <td>
+                                    <a href=""><i class="glyphicon glyphicon-pencil" ng-click='editRecord(record)'> </i></a>
+                                    <a href=""><i class="glyphicon glyphicon-trash" ng-click='removeRecord(record)'> </i></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <form ng-if="edittedRecord">
+                    <h2>Edit Records</h2>
+                    <div class="form-group">
+                        <label for="">Date (yyyy-mm-dd)</label>
+                        <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model='edittedRecord.date'>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Description</label>
+                        <input type="text" class="form-control" placeholder="description..." ng-model='edittedRecord.description'>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Debits($)</label>
+                        <input type="number" class="form-control" placeholder="$" ng-model='edittedRecord.debits'>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Credtis($)</label>
+                        <input type="number" class="form-control" placeholder="$" ng-model='edittedRecord.credits'>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary" ng-click="saveEdit()">Update</button>
+                    <br />
+                    <button class="btn btn-block btn-primary" ng-click="cancelEdit()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+<script src='main.js'></script>
+
 </html>
