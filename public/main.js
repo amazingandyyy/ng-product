@@ -24,23 +24,23 @@ app.controller('mainCtrl', function($scope) {
         for (var i = 0; i < $scope.records.length; i++) {
             var credits = $scope.records[i].credits;
             var debits = $scope.records[i].debits;
-            total += Math.round((credits - debits)*100)/100;
+            total += (credits - debits);
         }
-        return total;
+        return Math.round(total * 100) / 100;;
     }
     $scope.getDebitsTotal = () => {
         var total = 0;
         for (var i = 0; i < $scope.records.length; i++) {
-            total += $scope.records[i].debits;
+            total +=  $scope.records[i].debits;
         }
-        return total;
+        return Math.round(total * 100) / 100;
     }
     $scope.getCreditsTotal = () => {
         var total = 0;
         for (var i = 0; i < $scope.records.length; i++) {
             total += $scope.records[i].credits;
         }
-        return total;
+        return Math.round(total * 100) / 100;
     }
     $scope.getTotal = (items) => {
         var total = 0;
@@ -67,94 +67,60 @@ app.controller('mainCtrl', function($scope) {
 
     $scope.records = [
   {
-    "date": "2016-03-21",
-    "description": "non",
-    "debits": 364.89,
-    "credits": 147.37
+    "date": "2015-03-16",
+    "description": "officia",
+    "debits": 321.41,
+    "credits": 70.78,
+    "notes": "pariatur pariatur elit"
   },
   {
-    "date": "2014-03-05",
+    "date": "2014-02-07",
+    "description": "irure",
+    "debits": 116.98,
+    "credits": 174.82,
+    "notes": "quis ad in"
+  },
+  {
+    "date": "2016-03-25",
+    "description": "commodo",
+    "debits": 35.4,
+    "credits": 415.64,
+    "notes": "ad qui sunt"
+  },
+  {
+    "date": "2014-09-27",
+    "description": "commodo",
+    "debits": 66.25,
+    "credits": 321.41,
+    "notes": "laborum excepteur fugiat"
+  },
+  {
+    "date": "2015-05-15",
+    "description": "ut",
+    "debits": 257.8,
+    "credits": 2.93,
+    "notes": "eiusmod sit velit"
+  },
+  {
+    "date": "2014-02-14",
+    "description": "deserunt",
+    "debits": 13.68,
+    "credits": 407.36,
+    "notes": "dolor amet dolore"
+  },
+  {
+    "date": "2016-04-11",
     "description": "culpa",
-    "debits": 416.5,
-    "credits": 237.21
+    "debits": 405.71,
+    "credits": 225.7,
+    "notes": "et id dolore"
   },
   {
-    "date": "2016-01-29",
-    "description": "reprehenderit",
-    "debits": 266.09,
-    "credits": 132.99
-  },
-  {
-    "date": "2015-02-06",
-    "description": "nostrud",
-    "debits": 328.72,
-    "credits": 366.11
-  },
-  {
-    "date": "2014-04-01",
-    "description": "ut",
-    "debits": 170.34,
-    "credits": 395.05
-  },
-  {
-    "date": "2015-01-11",
-    "description": "et",
-    "debits": 347.94,
-    "credits": 498.2
-  },
-  {
-    "date": "2015-07-08",
-    "description": "adipisicing",
-    "debits": 20.07,
-    "credits": 19.89
-  },
-  {
-    "date": "2016-01-08",
-    "description": "cillum",
-    "debits": 277.81,
-    "credits": 454.62
-  },
-  {
-    "date": "2014-03-05",
-    "description": "voluptate",
-    "debits": 428.17,
-    "credits": 255.19
-  },
-  {
-    "date": "2014-08-14",
-    "description": "minim",
-    "debits": 335.88,
-    "credits": 419.41
-  },
-  {
-    "date": "2014-08-17",
-    "description": "veniam",
-    "debits": 383.09,
-    "credits": 383.42
-  },
-  {
-    "date": "2015-12-23",
-    "description": "proident",
-    "debits": 102.74,
-    "credits": 432.44
-  },
-  {
-    "date": "2014-05-11",
-    "description": "occaecat",
-    "debits": 324.86,
-    "credits": 425.13
-  },
-  {
-    "date": "2015-07-23",
-    "description": "ut",
-    "debits": 256.5,
-    "credits": 60.14
-  },
-  {
-    "date": "2014-09-21",
-    "description": "pariatur",
-    "debits": 177.94,
-    "credits": 419.94
+    "date": "2015-05-21",
+    "description": "incididunt",
+    "debits": 461.9,
+    "credits": 475.96,
+    "notes": "exercitation ut adipisicing"
   }
 ]
 

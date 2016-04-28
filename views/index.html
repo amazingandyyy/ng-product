@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <div ng-app='myApp' ng-controller='mainCtrl' class="container" style="padding-top: 40px">
+    <div ng-app='myApp' ng-controller='mainCtrl' class="container-fluid" style="padding-top: 40px">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <form ng-submit="addRecord()">
                     <h2>New Records</h2>
                     <div class="form-group">
@@ -25,20 +25,24 @@
                     </div>
                     <div class="form-group">
                         <label for="">Debits</label>
-                        <input type="text" class="form-control" placeholder="$" ng-model='newRecord.debits'>
+                        <input type="number" class="form-control" placeholder="$" ng-model='newRecord.debits' data-ng-disabled="newRecord.credits" ng-value="newRecord.credits? newRecord.debits = 0 : null">
                     </div>
                     <div class="form-group">
                         <label for="">Credtis</label>
-                        <input type="text" class="form-control" placeholder="$" ng-model='newRecord.credits'>
+                        <input type="number" class="form-control" placeholder="$" ng-model='newRecord.credits' data-ng-disabled="newRecord.debits" ng-value="newRecord.debits? newRecord.credits = 0 : null">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Notes</label>
+                        <textarea rows="3" type="text" class="form-control" placeholder="notes" ng-model='newRecord.notes'></textarea>
                     </div>
                     <button type="submit" class="btn btn-block btn-primary">Add</button>
                 </form>
                 <hr>
 
             </div>
-            <div class="col-sm-6" ng-if="records">
+            <div class="col-sm-8" ng-if="records">
                 <div class="list-group">
-                    <h2>Your Balance:<span> (${{getBalence()}})</span></h2>
+                    <h2>Your Balance:<span> ${{getBalence()}}</span></h2>
                     <div class="row">
                         <div class="col-sm-11">
                             <input type="text" placeholder="Search" class="form-control" ng-model="searchFilter">
@@ -56,23 +60,25 @@
                                 <td ng-click="sortBy('description')">Description</td>
                                 <td ng-click="sortBy('debits')">Debits (${{ getDebitsTotal() }})</td>
                                 <td ng-click="sortBy('credits')">Credits (${{ getCreditsTotal() }})</td>
+                                <td ng-click="sortBy('notes')">Notes ({{ records.length }})</td>
                                 <td></td>
                             </tr>
                             <tr ng-repeat="record in records | orderBy:order | filter:searchFilter track by $index">
                                 <td>{{record.date}}</td>
                                 <td>{{record.description}}</td>
-                                <td>${{record.debits}}</td>
-                                <td>${{record.credits}}</td>
+                                <td ng-style="{opacity : (record.debits == 0)?'0':'1'}">${{record.debits}}</td>
+                                <td ng-style="{opacity : (record.credits == 0)?'0':'1'}">${{record.credits}}</td>
+                                <td>{{record.notes}}</td>
                                 <td>
                                     <a href=""><i class="glyphicon glyphicon-pencil" ng-click='editRecord(record)'> </i></a>
-                                    <a href=""><i class="glyphicon glyphicon-trash" ng-click='removeRecord(record)'> </i></a>
+                                    <a href=""><i class="glyphicon glyphicon-trash" ng-click='removeRecord(record)' ng-if="!edittedRecord"> </i></a>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <form ng-if="edittedRecord">
                     <h2>Edit Records</h2>
                     <div class="form-group">
@@ -90,6 +96,10 @@
                     <div class="form-group">
                         <label for="">Credtis($)</label>
                         <input type="number" class="form-control" placeholder="$" ng-model='edittedRecord.credits'>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Notes</label>
+                        <textarea row="3" type="text" class="form-control" placeholder="notes" ng-model='edittedRecord.notes'></textarea>
                     </div>
                     <button type="submit" class="btn btn-block btn-primary" ng-click="saveEdit()">Update</button>
                     <br />
