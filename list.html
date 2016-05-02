@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-sm-4">
-        <h1>Add</h1>
+        <h1><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add</h1>
         <form ng-submit="addNewItem()">
             <div class="form-group">
                 <label for="exampleInputEmail1">Item name</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="apple" ng-model="newItem.name" required>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Pineapple" ng-model="newItem.name" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Item description</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="from Taiwan" ng-model="newItem.desc">
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="exprire really soon" ng-model="newItem.desc">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Item price ($)</label>
@@ -16,31 +16,32 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Item category</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="fruit" ng-model="newItem.cate">
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="fruits" ng-model="newItem.cate">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Item Image (URL)</label>
-                <input type="url" class="form-control" id="exampleInputPassword1" placeholder="fruit" ng-model="newItem.img">
+                <input type="url" class="form-control" id="exampleInputPassword1" placeholder="http://elizabethdougherty.com/wp-content/uploads/2013/05/Tasty_Pineapple.jpg" ng-model="newItem.img">
+                <p>Try this image: http://goo.gl/bzi535</p>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default">Add {{newItem.name}} to the list</button>
         </form>
     </div>
     <div class="col-sm-8">
-        <h1>list</h1>
+        <h1><i class="fa fa-th-list" aria-hidden="true"></i> List</h1>
 
         <table class="table table-hover">
             <input type="text" placeholder="Search" class="form-control" ng-model="searchFilter">
             <thead>
                 <tr>
-                    <th ng-click="sortBy('id')">id</th>
-                    <th ng-click="sortBy('name')">Name</th>
-                    <th ng-click="sortBy('desc')">Description</th>
-                    <th ng-click="sortBy('price')">Price</th>
-                    <th ng-click="sortBy('cate')">Categories</th>
+                    <th ng-click="sortBy('id')" style="cursor: pointer;">id</th>
+                    <th ng-click="sortBy('name')" style="cursor: pointer;">Name</th>
+                    <th ng-click="sortBy('desc')" style="cursor: pointer;">Description</th>
+                    <th ng-click="sortBy('price')" style="cursor: pointer;">Price</th>
+                    <th ng-click="sortBy('cate')" style="cursor: pointer;">Categories</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in items | orderBy:order | filter:searchFilter track by $index" ui-sref="detail({id:items.indexOf(item)})">
+                <tr ng-repeat="item in items | orderBy:order | filter:searchFilter track by $index" ui-sref="detail({id:items.indexOf(item)})" style="cursor: pointer;">
                     <td>{{items.indexOf(item)}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.desc}}</td>

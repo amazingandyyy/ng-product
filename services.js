@@ -25,7 +25,8 @@ app.service('Items', function() {
         "name": "Higgins",
         "desc": "sit pariatur aliqua nulla veniam",
         "cate": "aute",
-        "price": 57.43
+        "price": 57.43,
+        "img": "http://ak1.ostkcdn.com/images/products/6626651/6626651/Cottage-Oak-Dining-Table-P14192779.jpg"
     }, {
         "name": "Pacheco",
         "desc": "velit labore quis sit eu",

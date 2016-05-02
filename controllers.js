@@ -69,51 +69,51 @@ app.controller('summaryCtrl', function($stateParams, $scope) {
 });
 
 var items = [{
-    "name": "Higgins",
+    "name": "Apple",
     "desc": "sit pariatur aliqua nulla veniam",
-    "cate": "aute",
+    "cate": "fruits",
     "price": 57.43,
-    "img": "http://s7d2.scene7.com/is/image/samsclub/0071752480873_A?wid=1500&hei=1500&fmt=jpg&qlt=80"
+    "img": "https://upload.wikimedia.org/wikipedia/commons/0/07/Honeycrisp-Apple.jpg"
 }, {
-    "name": "Pacheco",
+    "name": "Old Table",
     "desc": "velit labore quis sit eu",
-    "cate": "amet",
+    "cate": "furniture",
     "price": 33.83,
-    "img": "http://s7d2.scene7.com/is/image/samsclub/0071752480873_A?wid=1500&hei=1500&fmt=jpg&qlt=80"
+    "img": "http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG"
 }, {
-    "name": "Sloan",
+    "name": "Fancy Table",
     "desc": "proident nisi quis Lorem amet",
-    "cate": "qui",
+    "cate": "furniture",
     "price": 39.74,
-    "img": "http://s7d2.scene7.com/is/image/samsclub/0071752480873_A?wid=1500&hei=1500&fmt=jpg&qlt=80"
+    "img": "http://ak1.ostkcdn.com/images/products/6626651/6626651/Cottage-Oak-Dining-Table-P14192779.jpg"
 }, {
-    "name": "Cross",
+    "name": "Beats Headphones",
     "desc": "voluptate excepteur dolor ad labore",
-    "cate": "id",
+    "cate": "accesory",
     "price": 49.58,
-    "img": "http://s7d2.scene7.com/is/image/samsclub/0071752480873_A?wid=1500&hei=1500&fmt=jpg&qlt=80"
+    "img": "https://red.org/wp-content/uploads/2015/10/product-cat-tech2.jpg?w=1192"
 }, {
-    "name": "Dale",
+    "name": "Apple Watch",
     "desc": "proident occaecat officia irure magna",
-    "cate": "deserunt",
+    "cate": "Devices",
     "price": 4.24,
-    "img": "http://s7d2.scene7.com/is/image/samsclub/0071752480873_A?wid=1500&hei=1500&fmt=jpg&qlt=80"
+    "img": "http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/M/LD/MLDJ2/MLDJ2?wid=572&hei=572&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=RW-kR1"
 }, {
-    "name": "Fuentes",
+    "name": "Banana",
     "desc": "consequat sunt qui anim sit",
-    "cate": "et",
+    "cate": "fruits",
     "price": 45.63,
     "img": "http://s7d2.scene7.com/is/image/samsclub/0071752480873_A?wid=1500&hei=1500&fmt=jpg&qlt=80"
 }, {
-    "name": "Schwartz",
+    "name": "HTC Vive",
     "desc": "voluptate id reprehenderit reprehenderit sint",
-    "cate": "ea",
-    "price": 66.4,
-    "img": "http://s7d2.scene7.com/is/image/samsclub/0071752480873_A?wid=1500&hei=1500&fmt=jpg&qlt=80"
+    "cate": "Devices",
+    "price": 299.00,
+    "img": "https://www.htcvive.com/managed-assets/shared/desktop/vive/VR_Web_Product_HMD.png"
 }, {
-    "name": "Petersen",
+    "name": "iPad",
     "desc": "ad dolore do dolore Lorem",
-    "cate": "ut",
-    "price": 64.68,
-    "img": "http://s7d2.scene7.com/is/image/samsclub/0071752480873_A?wid=1500&hei=1500&fmt=jpg&qlt=80"
+    "cate": "Devices",
+    "price": 464.68,
+    "img": "http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/i/pa/ipad/air/ipad-air-witb-gray-cel-201410_GEO_US?wid=366&hei=519&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=DN9lf2"
 }]
