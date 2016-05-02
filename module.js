@@ -2,6 +2,9 @@
 
 var app = angular.module('myApp', ['ui.router']);
 
+// localStorage.ngProductsList = [{'name': 'andy'}, {'yo': 'dd'}];
+// console.log('ddd: ', JSON.parse(localStorage.ngProductsList));
+
 app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {

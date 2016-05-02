@@ -4,17 +4,24 @@ var app = angular.module('myApp');
 
 app.service('Items', function() {
 
+    this.getAll = function() {
+        try {
+            var ngProductsList = JSON.parse(localStorage.ngProductsList);
+        } catch (err) {
+            // var ngProductsList = [];
+        }
+        return ngProductsList;
+    };
+    this.addOne= function(item) {
+        try {
+            localStorage.ngProductsList = JSON.stringify(ngProductsList);
+        } catch (error) {
+            console.log("JSON Error: ", err);
+        };
+    };
 
 
-    this.getAll = () => {
-        return items;
-    }
-    this.getOneById = (id) => {
-        return $http.get(`http://pokeapi.co/api/v2/pokemon/${id}/`);
-    }
-
-
-    var items = [{
+    var items =[{
         "name": "Higgins",
         "desc": "sit pariatur aliqua nulla veniam",
         "cate": "aute",
@@ -54,6 +61,8 @@ app.service('Items', function() {
         "desc": "ad dolore do dolore Lorem",
         "cate": "ut",
         "price": 64.68
-    }]
+    }];
 
+
+    //
 });

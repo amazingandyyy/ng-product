@@ -1,46 +1,56 @@
-<div class="jumbotron">
-  <h1>Details of {{item.name}}</h1>
-  <hr>
-  <div class="row">
-      <div class="col-sm-6">
-          <img src="{{item.img}}" style="max-width: 90%"/>
-      </div>
-      <div class="col-sm-6">
-          <h3>name; {{item.name}}</h3>
-          <h3>description: {{item.desc}}</h3>
-          <h3>Price: {{item.price || 0 | currency: $}}</h3>
-          <h3>Category: {{item.cate}}</h3>
-      </div>
-  </div>
+
+<div class="col-sm-1"></div>
+<div ng-class="(edittedItem)? 'col-sm-8' : 'col-sm-10'">
+    <div class="jumbotron">
+        <h3>Details of {{item.name}}</h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="{{item.img}}" style="max-width: 80%" />
+            </div>
+            <div class="col-sm-6">
+                <h4>name: {{item.name}}</h4>
+                <h4>description: {{item.desc}}</h4>
+                <h4>Price: {{item.price || 0 | currency: $}}</h4>
+                <h4>Category: {{item.cate}}</h4>
+                    <p><a class="btn btn-primary btn-md" role="button" ng-click="editItem(item.id)">Edit {{item.name}}</a></p>
+                    <p><a class="btn btn-danger btn-md" role="button" ui-sref="list" ng-click="deleteItem(item.id)">Delete {{item.name}}</a></p>
+                    <button class="btn btn-default" ui-sref="list">Go back to list</button>
+            </div>
+
+        </div>
 
 
-  <!-- <h3>id: {{item.id}}</h3> -->
-  <br>
-  <p><a class="btn btn-primary btn-md" role="button" ng-click="editItem(item.id})">Edit</a></p>
-  <p><a class="btn btn-danger btn-md"role="button" ng-click="deleteItem(item.id})">Delete</a></p>
+        <!-- <h3>id: {{item.id}}</h3> -->
+        <br>
+
+    </div>
 </div>
-
-<form ng-if="edittedItem" ng-submit="addNewItem()">
-    <h1>Edit</h1>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Item name</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="apple" ng-model="edittedItem.name" required>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Item description</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="from Taiwan" ng-model="edittedItem.desc">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Item price ($)</label>
-        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="4.03" ng-model="edittedItem.price" required>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Item category</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="fruit" ng-model="edittedItem.cate">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Item Image (URL)</label>
-        <input type="url" class="form-control" id="exampleInputPassword1" placeholder="fruit" ng-model="edittedItem.img">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+<div class="col-sm-3" ng-if="edittedItem">
+    <form  ng-submit="updateOldItem(edittedItem.id)">
+        <h1>Edit</h1>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Item name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="apple" ng-model="edittedItem.name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Item description</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="from Taiwan" ng-model="edittedItem.desc">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Item price ($)</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="4.03" ng-model="edittedItem.price" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Item category</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="fruit" ng-model="edittedItem.cate">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Item Image (URL)</label>
+            <input type="url" class="form-control" id="exampleInputPassword1" placeholder="fruit" ng-model="edittedItem.img">
+        </div>
+        <button type="submit" class="btn btn-default">Save it</button>
+        <button class="btn btn-default" ng-click="cancelClick()">Cancel</button>
+    </form>
+</div>
+<div class="col-sm-1"></div>

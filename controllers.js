@@ -39,6 +39,20 @@ app.controller('detailCtrl', function($stateParams, $scope) {
         console.log('iddd: ', id);
         $scope.edittedItem = angular.copy(items[id]);
     }
+    $scope.deleteItem = (id) => {
+        console.log('iddd: ', id);
+        items.splice(id,1);
+    }
+    $scope.updateOldItem = (id) => {
+        console.log('updateOldItem: ', id);
+        console.log('$scope.edittedItem: ', $scope.edittedItem);
+        items[id] = $scope.edittedItem;
+        $scope.item =$scope.edittedItem;
+        $scope.edittedItem= null;
+    }
+    $scope.cancelClick = () => {
+        $scope.edittedItem= null;
+    }
 });
 app.controller('summaryCtrl', function($stateParams, $scope) {
     console.log('summaryCtrl loaded');
