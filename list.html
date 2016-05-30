@@ -42,7 +42,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="item in items | orderBy:order | filter:searchFilter track by $index" ui-sref="detail({id:items.indexOf(item)})" style="cursor: pointer;">
-                    <td>{{items.indexOf(item)}}</td>
+                    <td>{{items.index}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.desc}}</td>
                     <td>{{item.price || 0 | currency: $}}</td>
